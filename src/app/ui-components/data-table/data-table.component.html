@@ -1,0 +1,22 @@
+<table class="table table-striped table-condensed table-hover" [ngClass]="{'table-bordered': border, 'disabled': disable}">
+  <thead>
+    <tr class="active">
+        <th>&nbsp;</th>
+        <th *ngFor="let column of columns" class="text-center">{{ column.header }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of itemsSource" [ngClass]="{'success': currentItem === item}">
+      <td (click)="onRowSelect(item)" class='cell-pointer' ><i class="fa fa-caret-right" aria-hidden="true"></i></td>
+      <!-- <ng-content select="[property={item.property}]"  ></ng-content> -->
+
+      <td *ngFor="let column of columns; let index = index" [ngClass]="column.horizontalAlignament">
+          <ng-container [ngSwitch]="column.columnType">
+              <span *ngSwitchCase="'DataColumn'" >{{ item[column.property] }}</span>
+              <a class="btn" *ngSwitchCase="'ButtonColumn'" (click)="clickButtonColumn(item)"><span [ngClass]="'fa fa-th-list'" ></span></a>
+          </ng-container>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

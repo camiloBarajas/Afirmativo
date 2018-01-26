@@ -1,0 +1,39 @@
+<form class="form-horizontal">
+  <div class="panel panel-default">
+
+    <div class="panel-heading text-right">
+      <a class="btn btn-link" (click)="clicNew()" [ngClass]="{ 'disabled': isAdding || isEditing }"><span class="fa fa-file-o"></span></a>
+      <a class="btn btn-link" (click)="clicEdit()" [ngClass]="{ 'disabled': isAdding || isEditing || item.id == '' }"><span class="fa fa-pencil"></span></a>
+      <a class="btn btn-link" (click)="clicDelete()" [ngClass]="{ 'disabled': isAdding || isEditing || item.id == '' }"><span class="fa fa-trash"></span></a>
+    </div>
+
+    <div class="panel-body">
+
+      <div *ngFor="let field of fields" class="form-group row">
+        <label class="col-sm-2 control-label" [attr.for]="field">{{ field.label + ': '}}</label>
+        <div class="col-sm-10">
+
+        <label *ngIf="!isAdding && !isEditing" class="control-label">{{ item[field.property] }}</label>
+          <div *ngIf="isAdding || isEditing">
+            <div [ngSwitch]="field.controlType">
+              <input *ngSwitchCase="'textbox'" type="text"[name]="field.property" [id]="field.property" class="form-control" [attr.placeholder]="field.placeholder" [(ngModel)]="item[field.property]" [attr.required]="field.required">
+
+              <textarea *ngSwitchCase="'textarea'" rows="4" [name]="field.property" [id]="field.property" class="form-control" [attr.placeholder]="field.placeholder" [(ngModel)]="item[field.property]" [attr.required]="field.required"></textarea>
+
+              <input *ngSwitchCase="'date'" type="date"[name]="field.property" [id]="field.property" class="form-control" [attr.placeholder]="field.placeholder" [(ngModel)]="item[field.property]" [attr.required]="field.required">
+
+              <input *ngSwitchCase="'label'" type="text"[name]="field.property" [id]="field.property" class="form-control" [attr.placeholder]="field.placeholder" [(ngModel)]="item[field.property]" disabled>
+              <!-- <label *ngSwitchCase="'label'" class="col-sm-2 control-label" [attr.for]="field">{{ item[field.property] }}</label> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer text-right">
+        <button type="button" class="btn btn-sm btn-primary" (click)="ok()" [disabled]="!isEditing && !isAdding">Ok</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="cancel()" [disabled]="!isEditing && !isAdding">Cancel</button>
+    </div>
+  </div>
+</form>

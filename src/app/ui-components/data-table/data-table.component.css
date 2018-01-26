@@ -1,0 +1,13 @@
+.disabled {
+  cursor: not-allowed;
+}
+
+.cell-pointer i {
+  margin-left: 5pt;
+}
+
+.cell-pointer:hover {
+
+  cursor:pointer;
+}
+

@@ -1,0 +1,9 @@
+.select-cell-pointer i {
+  margin-left: 5pt;
+}
+
+.select-cell-pointer:hover {
+
+  cursor:pointer;
+}
+

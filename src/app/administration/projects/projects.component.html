@@ -1,0 +1,87 @@
+<div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="clicOk($event)" >
+        <div class="panel panel-default">
+
+          <div class="panel-heading text-right">
+            <a class="btn btn-link" (click)="clickNew()" [ngClass]="{ 'disabled': isAdding || isEditing }"><span class="fa fa-file-o"></span></a>
+            <a class="btn btn-link" (click)="clickEdit()" [ngClass]="{ 'disabled': isAdding || isEditing || currentItem.id == '' }"><span class="fa fa-pencil"></span></a>
+            <a class="btn btn-link" (click)="clickDelete()" [ngClass]="{ 'disabled': isAdding || isEditing || currentItem.id == '' }"><span class="fa fa-trash"></span></a>
+          </div>
+
+          <div class="panel-body">
+
+            <div class="form-group row">
+              <label class="col-sm-2 control-label" for="name">Name:</label>
+              <div class="col-sm-10">
+                <label *ngIf="!isAdding && !isEditing" class="control-label">{{ currentItem.name }}</label>
+                <input *ngIf="isAdding || isEditing" type="text" name="name" id="name" class="form-control" placeholder="Enter Name"  required [(ngModel)]="currentItem.name" #name="ngModel">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-2 control-label" for="description">Description:</label>
+              <div class="col-sm-10">
+                <label *ngIf="!isAdding && !isEditing" class="control-label">{{ currentItem.description }}</label>
+                <textarea *ngIf="isAdding || isEditing" name="description" id="description" class="form-control" rows="5" placeholder="Enter Description"  required [(ngModel)]="currentItem.description" #description="ngModel"></textarea>
+                <!-- <input *ngSwitchCase="'date'" type="date"[name]="field.property" [id]="field.property" class="form-control" [attr.placeholder]="field.placeholder" [(ngModel)]="item[field.property]" [attr.required]="field.required"> -->
+                <!-- <label *ngSwitchCase="'label'" class="col-sm-2 control-label" [attr.for]="field">{{ item[field.property] }}</label> -->
+              </div>
+            </div>
+
+          </div>
+
+          <div class="panel-footer text-right">
+            <button type="submit" class="btn btn-sm btn-primary" [disabled]="!isEditing && !isAdding">Ok</button>
+            <button type="button" class="btn btn-sm btn-primary" (click)="clickCancel()" [disabled]="!isEditing && !isAdding">Cancel</button>
+          </div>
+
+        </div>
+    </form>
+</div>
+
+<div>
+  <table class="table table-striped table-condensed table-responsive table-hover">
+    <thead>
+      <tr class="bg-primary">
+          <th>&nbsp;</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Description</th>
+          <th class="text-center">Created Date</th>
+          <th class="text-center">Specification</th>
+          <th class="text-center">Resources</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itemsSource" [ngClass]="{'success': currentItem === item}">
+        <td (click)="rowSelect(item)" class='select-cell-pointer' ><i class="fa fa-caret-right" aria-hidden="true"></i></td>
+        <td><span>{{ item.name }}</span></td>
+        <td><span>{{ item.description }}</span></td>
+        <td class="text-center"><span>{{ item.createdDate }}</span></td>
+        <!-- <td class="text-center"><a class="btn btn-xs" (click)="clickSpecification(item)"><span class="fa fa-th-list"></span></a></td> -->
+        <td class="text-center"><a class="btn btn-xs" [routerLink]="['/project-specification', item.id]"><span class="fa fa-th-list"></span></a></td>
+        <!-- <td class="text-center"><a class="btn btn-xs" (click)="clickResources(item)"><span class="fa fa-users"></span></a></td> -->
+        <td class="text-center"><a class="btn btn-xs" [routerLink]="['/project-resources', item.id]"><span class="fa fa-users"></span></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!--
+  <data-form [item]="currentItem" (onDelete)="onDelete($event)" (onEdit)="onEdit($event)" (onNew)="onNew($event)" (onCancel)="onCancel($event)" (onOk)="onOk($event)">
+    <data-field label="Name" property="name" controlType="textbox" placeholder="Enter Name" required="true"></data-field>
+    <data-field label="Description" property="description" controlType="textarea" placeholder="Enter Description"></data-field>
+    <data-field label="Created Date" property="createdDate" controlType="label" placeholder="Enter Date"></data-field>
+  </data-form>
+
+  <data-table [border]="false" [itemsSource]="itemSource" [currentItem]="currentItem" (itemSelected)="onItemSelected($event)">
+    <data-column header='Name' property='name'></data-column>
+    <data-column header='Description' property='description'></data-column>
+    <data-column header='Created Date' property='createdDate' horizontalAlignament="text-center"></data-column>
+    <button-column header='Detail' property='' horizontalAlignament="text-center" onClick="onClick($event)"></button-column>
+  </data-table>
+-->
+
+
+
