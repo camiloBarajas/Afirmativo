@@ -1,6 +1,4 @@
-<h4>{{header}}</h4>
-<hr>
-<form #formUser="ngForm" (ngSubmit)="onSubmit()" id="formRegister">
+<form #formUser="ngForm" (ngSubmit)="onSubmit()">
             <label>UserName</label>
             <input type="text" class="form-control"   [(ngModel)]="user.username" name="username" #username="ngModel" required  />
 
@@ -15,6 +13,10 @@
 
             <label>Apellido</label>
             <input type="text" class="form-control"   [(ngModel)]="user.apellido" name="apellido" #apellido="ngModel" required  />
+            <br>
+            <label>Fecha de nacimiento</label>
+            <input type='date' #dateofbirth="ngModel" [(ngModel)]='user.dateofbirth' name="dateofbirt" required/>
+            <br>
 
             <label>Numero</label>
             <input type="text" class="form-control"   [(ngModel)]="user.numero_contacto" name="numero_contacto" #numero_contacto="ngModel" required   />

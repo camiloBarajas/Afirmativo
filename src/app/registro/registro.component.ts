@@ -20,7 +20,7 @@ export class RegisterComponent {
         private _route: ActivatedRoute,
         private _router: Router
         ) {
-        this.user = new User("","","","","","");
+        this.user = new User("","","","","",new Date(),"");
         this.header="Registro de productos";
     }
     ngOnInit(){   
