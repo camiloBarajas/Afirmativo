@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Config } from 'app/app.config';
-import { AuthorizationData } from 'app/models/AuthorizationData';
+import { AuthorizationData } from 'app/models/authorizationData';
 
 @Injectable()
 export class AuthenticationService {
