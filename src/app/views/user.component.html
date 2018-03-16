@@ -1,0 +1,13 @@
+
+<div *ngIf="usuarios">
+	<H1>Componente Usuarios</H1>
+	<h3>Listado de Usuarios</h3>
+	<ul>
+		<li *ngFor="let usuario of usuarios">
+			{{usuario.apellido}}
+		</li>
+	</ul>
+</div>
+<div *ngIf="!usuarios">
+	<h3>No Hay Usuarios registrados</h3>
+</div>

@@ -1,0 +1,23 @@
+<h4>{{header}}</h4>
+<hr>
+<form #formUser="ngForm" (ngSubmit)="onSubmit()" id="formRegister">
+            <label>UserName</label>
+            <input type="text" class="form-control"   [(ngModel)]="user.username" name="username" #username="ngModel" required  />
+
+             <label>Email</label>
+             <input type="text" class="form-control"   [(ngModel)]="user.email" name="email" #email="ngModel" required />
+
+             <label>Password</label>
+             <input type="password" class="form-control"   [(ngModel)]="user.password" name="password" #password="ngModel" required  />
+
+             <label>Nombre</label>
+            <input type="text" class="form-control"   [(ngModel)]="user.nombre" name="nombre" #nombre="ngModel" required  />
+
+            <label>Apellido</label>
+            <input type="text" class="form-control"   [(ngModel)]="user.apellido" name="apellido" #apellido="ngModel" required  />
+
+            <label>Numero</label>
+            <input type="text" class="form-control"   [(ngModel)]="user.numero_contacto" name="numero_contacto" #numero_contacto="ngModel" required   />
+
+            <input type="submit" value="Registrar" class="btn btn-success">
+</form>

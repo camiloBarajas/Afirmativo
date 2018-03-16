@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -26,6 +26,11 @@ import { DataTable } from 'app/ui-components/data-table/data-table.component';
 import { MomentPipe } from './pipes/moment.pipe';
 import { ProjectResourcesComponent } from './administration/project-resources/project-resources.component';
 import { ProjectSpecificationComponent } from './project-specification/project-specification.component';
+import { UserListComponent} from './users/user.component';
+import { RegisterComponent} from './registro/registro.component';
+
+
+
 
 
 @NgModule({
@@ -42,6 +47,8 @@ import { ProjectSpecificationComponent } from './project-specification/project-s
     MomentPipe,
     ProjectResourcesComponent,
     ProjectSpecificationComponent,
+    UserListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,9 @@ import { AboutComponent } from 'app/about/about.component';
 import { ProjectsComponent } from 'app/administration/projects/projects.component';
 import { ProjectResourcesComponent } from './administration/project-resources/project-resources.component';
 import { ProjectSpecificationComponent } from './project-specification/project-specification.component';
+import { UserListComponent} from './users/user.component';
+import { RegisterComponent} from './registro/registro.component';
+
 
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -22,7 +25,10 @@ const appRoutes: Routes = [
   { path: 'projects', component: ProjectsComponent},
   { path: 'project-resources/:id', component: ProjectResourcesComponent },
   { path: 'project-specification/:id', component: ProjectSpecificationComponent },
+  { path: 'users', component: UserListComponent },
+  { path: 'registro', component: RegisterComponent},
   { path: '**', component: NotFoundComponent }
+
 ];
 
 
